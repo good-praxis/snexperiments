@@ -1,5 +1,5 @@
 # Name
-name		:= First Program
+name		:= First
 debug		:= 1
 
 # Use packages
