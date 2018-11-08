@@ -1,1 +1,4 @@
 *.sfc
+*.sym
+*/.build/
+*/.build_libsfx/
