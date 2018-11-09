@@ -2,3 +2,5 @@
 *.sym
 */.build/
 */.build_libsfx/
+*.bsz
+*.cht
