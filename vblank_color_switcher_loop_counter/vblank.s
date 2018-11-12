@@ -45,11 +45,12 @@ green:
 
 waitingaholebunch:
         lda     #$20
-        sta     $0000
+        sta     $0000           ; loop counter
 wait:   
         lda     $0000
         dec     a
         sta     $0000
+        
         wai
         lda     #$0F
         sta     $2100
