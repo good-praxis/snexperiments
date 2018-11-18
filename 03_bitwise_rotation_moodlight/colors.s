@@ -12,6 +12,10 @@ Main:
         stz     $2122
         lda     #%00011111
         sta     $2122
+                        ; We are going to use $0002 and $0003 as our
+                        ; local copies of CGRAM, because the 7th bit
+                        ; of the 2nd byte of CGRAM resets inbetween frames.
+        sta     $0003   
         
         lda     #$0F
         sta     $2100
@@ -20,24 +24,24 @@ Main:
 
 mainloop:
         wai             ; waiting for interrupt
-        clc
-        sec             ; making sure we will use the carry flag
-        
-        stz     $2121
-        lda     $213b   ; reading from CG-RAM
-        rol     a       ; rotating with carry
-        tax             ; storing into x for now
-        lda     $213b
-        rol     a
-        tay             ; transfering to y for now
-        
-        txa
-        adc     #$00    ; adding 0, this will add the carry bit if set
-        
-        stz     $2121   ; resetting address
 
-        sta     $2122
-        tya
+        clc
+
+        lda     $0002   ; reading local version of CGRAM (first address)
+        rol
+        sta     $0002   ; Storing this again because we'll have to add carry later
+        
+        lda     $0003   ; Reading 2nd address
+        rol     
+        sta     $0003 
+        
+        lda     $0002
+        adc     #$00    ; adding 0, this will add the carry bit if set
+        sta     $0002
+
+        stz     $2121   ; resetting address, adding new values to CGRAM
+        sta     $2122   
+        lda     $0003
         sta     $2122
 
 
