@@ -15,8 +15,9 @@ Main:
         sta     $2100
         jmp     mainloop
 
-mainloop:
+sleep:
         wai
+mainloop:
         lda     #$81    ; enabling joypad
         sta     $4200
 
@@ -50,11 +51,11 @@ checkGreen:
         beq     write
 
 
-checkWhite:
+checkOrange:
 
-        cmp     #$08    ;11110111, so it'll be FF if we press up
-        lda     #$FF
+        lda     #$FF    ; value of yellow
         sta     $0000   ; write registers
+        lda     #$01
         sta     $0001
  
         lda     $0034
