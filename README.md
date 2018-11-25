@@ -2,7 +2,7 @@
 My Snes Experiments
 
 This repository is a container for all the little things I'm trying out in 65182 assembly / and trying to get them to run on bsnes/higan
-The toolchain consists of [libsfx](add a link you idiot) and [bsnes-plus](here, too) for debugging.
+The toolchain consists of [libsfx](https://github.com/Optiroc/libSFX) and [bsnes-plus](https://github.com/devinacker/bsnes-plus) for debugging.
 
 # Map
 ## 00 - Blue Screen
